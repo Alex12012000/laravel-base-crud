@@ -14,7 +14,7 @@
         </div>
 
         <div>
-            <a href="#">More details..</a>
+            <a href="{{ route('comics.show', ['comic' => $comic->id]) }}">More details..</a>
         </div>
         <br>
     @endforeach
