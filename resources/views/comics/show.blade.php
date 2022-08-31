@@ -12,4 +12,11 @@
     <h3>
         {{ $comic['price'] }}
     </h3>
+    <br>
+
+
+    <br>
+    <div>
+        <a href="{{ route('comics.edit', ['comic' => $comic->id]) }}">Modifica prodotto</a>
+    </div>
 @endsection

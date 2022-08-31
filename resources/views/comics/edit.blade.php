@@ -1,0 +1,66 @@
+@extends('layout.app')
+
+@section('main_content')
+    <h1>Edit your Comic</h1>
+
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
+    <form action="{{ route('comics.update', ['comic' => $comic->id]) }}" method="POST">
+        @csrf
+        @method('PUT')
+
+        <div>
+            <label for="title">Titolo</label>
+            <input type="text" name="title" id="title" value="{{ old('title') ? old('title') : $comic->title  }}">
+        </div>
+        <br>
+
+        <div>
+            <label for="description">Descrizione</label>
+            <textarea name="description" id="description" cols="30" rows="10" >{{ old('description') ? old('description') : $comic->description  }}</textarea>
+        </div>
+        <br>
+
+        <div>
+            <label for="thumb">Url Immagine</label>
+            <input type="text" name="thumb" id="thumb" value="{{ old('thumb') ? old('thumb') : $comic->thumb  }}">
+        </div>
+        <br>
+
+        <div>
+            <label for="price">Prezzo</label>
+            <input type="text" name="price" id="price" value="{{ old('price') ? old('price') : $comic->price  }}">
+        </div>
+        <br>
+
+        <div>
+            <label for="series">Serie</label>
+            <input type="text" name="series" id="series" value="{{ old('series') ? old('series') : $comic->series  }}">
+        </div>
+        <br>
+
+        <div>
+            <label for="sale_date">Data di vendita</label>
+            <input type="date" name="sale_date" id="sale_date" value="{{ old('sale_date') ? old('sale_date') : $comic->sale_date  }}">
+        </div>
+        <br>
+        
+        <div>
+            <label for="type">Tipo</label>
+            <input type="text" name="type" id="type" value="{{ old('type') ? old('type') : $comic->type  }}">
+        </div>
+        <br>
+
+
+        <input type="submit" value="Salva">
+
+    </form>
+@endsection
